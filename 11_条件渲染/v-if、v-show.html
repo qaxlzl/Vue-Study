@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        这是a的值 {{a}} <br> <br>
+        <button @click="a++">点我</button>
+        <template v-if="a===1">
+            <h1 >anglur</h1>
+            <h1 >react</h1>
+            <h1 >vue</h1>
+        </template>
+        
+    </div>
+
+
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                   a:0,
+                };
+            },
+        })
+
+    </script>
+</body>
+
+</html>
