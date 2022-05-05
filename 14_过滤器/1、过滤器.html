@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <h1>当前时间：{{timeFormat}}-----计算属性</h1>
+        <h1>当前时间：{{getTime()}}-----方法属性</h1>
+        <h1>当前时间：{{time | myFilter}}-----过滤器属性</h1>
+    </div>
+
+
+    <script>
+        Vue.config.productionTip = false;
+        //全局过滤器
+        Vue.filter('myFilter',function(value){
+            return dayjs(value).format('YYYY-MM-DD');
+        })
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    time:1651567489338,
+                };
+            },
+            computed:{
+                timeFormat(){
+                    return dayjs(this.time).format('YYYY-MM-DD');
+                }
+            },
+            methods: {
+                getTime(){
+                    return dayjs(this.time).format('YYYY-MM-DD');
+                }
+            },
+            //局部过滤器
+            filters:{
+                timeFilter(value){
+                    return dayjs(value).format('YYYY-MM-DD');
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>
